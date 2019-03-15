@@ -1,0 +1,33 @@
+<script>
+  // 查找字符串中出现次数最多且出现位置最靠前的那个字符
+  const fristMinstr = (str, num=1) => {
+    const newstr = [];
+    if( typeof str === 'string'){
+        // 先去重减少遍历次数
+        for(let i=0;i<str.length;i++){
+          newstr.indexOf(str[i]) === -1 ? newstr.push(str[i]) : ''
+        }
+      const isItem = newstr.map((item,index)=>{
+          let isnum = 0;
+          // 找到当前元素的出现次数 isnum 
+          for(let i=0;i<str.length;i++){
+              str[i] === item ? isnum++ : ''
+            }
+           if(isnum <= num){
+              return item
+           }else{
+              return ''
+           } 
+        })
+        const istxt = isItem.join('')
+        if(istxt !==''){
+          return istxt[0]
+        }else{
+          fristMinstr(str,num++)
+        }
+      }else{
+        const x = TypeError();
+        return x
+      }
+  }
+</script>
